@@ -170,7 +170,6 @@ namespace UDP_SOCK
                     // send to the handler function
                     handler(addr, msg);
                 }
-                catch (TimeoutException e) { } // ignore the timeout and carry on
                 // if this exception occurrs try to exit gracefully
                 catch (ThreadAbortException e)
                 {
@@ -180,7 +179,8 @@ namespace UDP_SOCK
                 }
                 catch (SocketException e)
                 {
-                    lastError = e;
+                    if(SocketError.TimedOut != e.SocketErrorCode)
+                        lastError = e;
                 }
                 catch (Exception e)
                 {
