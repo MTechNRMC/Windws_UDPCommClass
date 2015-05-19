@@ -13,7 +13,7 @@ namespace UDP_SOCK
         {
             UDP_SOCK server = new UDP_SOCK(2000);
 
-            Console.WriteLine("Bound to port 1000");
+            Console.WriteLine("Bound to port 2000");
 
             server.startReceive(handlerEcho);
 
